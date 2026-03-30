@@ -4,11 +4,13 @@ Auto-copies new screenshots to your clipboard so you can **Cmd+V** (or Ctrl+V) i
 
 ## The Problem
 
-When using AI chat panels in VS Code or Cursor (Claude Code, GitHub Copilot Chat, etc.), drag-and-drop of screenshots doesn't work. You're forced to manually navigate to files or type paths.
+When using AI chat panels in VS Code or Cursor -- like **Claude Code**, GitHub Copilot Chat, or any AI assistant -- drag-and-drop of screenshots doesn't work. You're forced to manually navigate to files or type paths just to share a screenshot.
 
 ## The Solution
 
-Screenshot Paste watches your screenshot directory and automatically copies new screenshots to your clipboard as image data. Take a screenshot, wait ~1 second, paste.
+Screenshot Paste watches your screenshot directory and automatically copies new screenshots to your clipboard as image data. Take a screenshot, wait ~300ms, paste.
+
+Works great with **Claude Code** (panel mode), **Cursor**, **GitHub Copilot Chat**, and any other VS Code chat panel that accepts pasted images.
 
 ## How It Works
 
