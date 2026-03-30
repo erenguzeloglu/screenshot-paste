@@ -1,0 +1,75 @@
+{
+  "name": "screenshot-paste",
+  "displayName": "Screenshot Paste",
+  "description": "Auto-copies new screenshots to clipboard so you can Cmd+V into AI chat panels",
+  "version": "0.1.0",
+  "publisher": "jaschon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erenguzeloglu/screenshot-paste"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["screenshot", "clipboard", "paste", "ai", "chat", "copilot", "claude"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Screenshot Paste",
+      "properties": {
+        "screenshotPaste.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic screenshot-to-clipboard watching"
+        },
+        "screenshotPaste.watchDirectories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Directories to watch for new screenshots. Leave empty for OS defaults (`~/Screenshots` and `~/Desktop` on macOS)."
+        },
+        "screenshotPaste.filePattern": {
+          "type": "string",
+          "default": "Screenshot*.png",
+          "description": "Glob pattern for screenshot filenames"
+        },
+        "screenshotPaste.notifications": {
+          "type": "string",
+          "enum": ["statusBar", "toast", "both", "none"],
+          "default": "statusBar",
+          "description": "How to notify when a screenshot is ready to paste"
+        },
+        "screenshotPaste.cooldownMs": {
+          "type": "number",
+          "default": 500,
+          "description": "Minimum milliseconds between processing screenshots (debounce)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "screenshotPaste.toggle",
+        "title": "Screenshot Paste: Toggle Watching"
+      },
+      {
+        "command": "screenshotPaste.copyLast",
+        "title": "Screenshot Paste: Copy Last Screenshot to Clipboard"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "build:prod": "node esbuild.js --production",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.21.0",
+    "typescript": "^5.5.0"
+  }
+}
